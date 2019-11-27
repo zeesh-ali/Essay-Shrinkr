@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<style media="screen">
+  #main{
+    background-color:rgb(280, 256, 252);
+    margin: 30px 20px 20px 30px;
+    margin-radius:50% 50% 50% 50%;
+    border:solid;
+    border-radius:25px;
+    text-align:center;
+  }
+  #img-div{
+  background-color:white;
+  border-radius:20px;
+  padding-left:5px;
+  padding-right:5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#image{
+  display:block;
+  padding: 30px 20px 30px 20px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  height: auto;
+  max-width:100%;
+}
+#input-info{
+  margin-left: auto;
+  margin-right: auto;
+  width: 35em;
+  text-align:justify;
+}
+#title{
+  text-align:center;
+}
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    }
+.textwrapper
+{
+  border:1px solid #999999;
+  margin:5px 0;
+  padding:3px;
+  max-width:100%;
+}
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius:8%;
+}
+</style>
+
+<head>
+  <meta charset="utf-8">
+  <title>ESSAY-SHRINKR</title>
+</head>
+<body>
+
+  <div id="main">
+  <h1 id="title">ESSAY-SHRINKR</h1>
+  <p>Nothin but the Crux !</p>
+    <figure id="img-div">
+      <img id="image" src="/static/shrrinktxt_logo2.png" alt="'I like density, not volume - Maureen Howard'">
+    </figure>
+      <div id="input-info">
+
+        <h2 id="input-heading">Paste or write your essay below in the textarea</h2>
+        <form action="{{ url_for('submit') }}" method="post">
+        <input class="button" onclick="wordCount()" id="Generate" name="Generate" type="submit" value="Generate Summary"></input>
+        <!--<input type="number" name="count" min="1" max="100" value='10'></input> % of Input as Output-->
+        <div id="countWord"></div>
+        <div class="textwrapper">
+        <textarea type="text" cols="80" rows="20" id="tarea" name="tarea" />{{inp}}</textarea></div>
+        </form>
+        <div id="output-text">
+          <h3>OUTPUT SUMMARY:</h3>
+          <p id="output">{{output}}
+          </p>
+          </div>
+          <br><br>
+          <p>
+            <em>---END OF TEXT OUTPUT---</em>
+          </p>
+          </div>
+          <div id="footer">
+          <br><br>
+          <p><strong>If you find my work helpful
+            <br>You can show your appreciation by buying me a Coffee<br> Donate $1 for Coffee.. <strong></p>
+          <form action="{{url_for('payment')}}" method="POST">
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{p_key}}"
+            data-iamge="/static/shrrinktxt_logo2.png"
+            data-name="ESSAY SHRINKR"
+            data-description="Essay Shrinkr Thanks"
+            data-amount="100"
+            data-locale="auto"
+            data-label="Essay Shrinkr Thanks"
+            data-zip-code="true">
+          </script>
+          </form>
+          <br><br>
+
+          <h3>Provide feedback through <a id="Send Mail" href="mailto:alisz@mail.uc.edu" target="_blank">Send Mail</a></h3>
+          </div>
+  </div>
+</body>
+</html>
